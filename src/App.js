@@ -15,6 +15,7 @@ function App() {
 
   // Uso de useEffect
   useEffect(() => {
+    let citasIniciales = JSON.parse(localStorage.getItem('citas'));
     if(citasIniciales){
       localStorage.setItem('citas', JSON.stringify(citas));
     }else{
