@@ -54,7 +54,7 @@ const Formulario = () => {
                     className="u-full-width"
                     placeholder="Nombre Mascota"
                     onChange={handleChange}
-                    value={mascota.trim()}
+                    value={mascota}
                 />
 
                 <label>Nombre Propietario</label>
@@ -64,7 +64,7 @@ const Formulario = () => {
                     className="u-full-width"
                     placeholder="Nombre del propietario"
                     onChange={handleChange}
-                    value={propietario.trim()}
+                    value={propietario}
                 />
 
                 <label>Fecha</label>
@@ -73,7 +73,7 @@ const Formulario = () => {
                     name="fecha"
                     className="u-full-width"
                     onChange={handleChange}
-                    value={fecha.trim()}
+                    value={fecha}
                 />
 
                 <label>Hora</label>
@@ -82,7 +82,7 @@ const Formulario = () => {
                     name="hora"
                     className="u-full-width"
                     onChange={handleChange}
-                    value={hora.trim()}
+                    value={hora}
                 />
 
                 <label>Sintomas</label>
@@ -90,7 +90,7 @@ const Formulario = () => {
                     name="sintomas"
                     className="u-full-width"
                     onChange={handleChange}
-                    value={sintomas.trim()}
+                    value={sintomas}
                 ></textarea>
 
                 <button
