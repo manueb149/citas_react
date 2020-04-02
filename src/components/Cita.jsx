@@ -20,7 +20,7 @@ const Cita = ({ cita, eliminarCita }) => (
     <button 
         className="button eliminar u-full-width"
         onClick={ () => eliminarCita(cita.id) }
-    >Eliminar</button>
+    >Eliminar &times;</button>
   </div>
 );
 

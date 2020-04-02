@@ -1,10 +1,26 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useState, useEffect } from "react";
 import Formulario from "./components/Formulario";
 import Cita from "./components/Cita";
 
 function App() {
+
+  // Citas en local Storage
+  let citasIniciales = JSON.parse(localStorage.getItem('citas'));
+  if(!citasIniciales){
+    citasIniciales = []
+  }
+
   // Arreglo de cirtas guardadas
-  const [citas, saveCitas] = useState([]);
+  const [citas, saveCitas] = useState(citasIniciales);
+
+  // Uso de useEffect
+  useEffect(() => {
+    if(citasIniciales){
+      localStorage.setItem('citas', JSON.stringify(citas));
+    }else{
+      localStorage.setItem('citas', JSON.stringify([]))
+    }
+  }, [citas] );
 
   // Funcion para actualizar citas guardadas
   const crearCita = cita => {
@@ -17,6 +33,9 @@ function App() {
     saveCitas(newCitas);
   };
 
+  // titulo
+  const titulo = citas.length === 0 ? 'No hay Citas' : 'Administra tus citas';
+
   return (
     <Fragment>
       <h1>Administrador de Pacientes</h1>
@@ -27,7 +46,7 @@ function App() {
             <Formulario crearCita={crearCita} />
           </div>
           <div className="one-half column">
-            <h2>Administra tus citas</h2>
+            <h2>{titulo}</h2>
             {citas.map(cita => (
               <Cita 
                 key={cita.id} 
