@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
-const Formulario = () => {
+const Formulario = ({crearCita}) => {
 
     // Crear state para citas
     const [ cita, updateCita ] = useState({
@@ -17,7 +18,7 @@ const Formulario = () => {
     const handleChange = (e) => {
         updateCita({
             ...cita,
-            [e.target.name]: e.target.value.trim()
+            [e.target.name]: e.target.value
         });
     };
 
@@ -30,6 +31,21 @@ const Formulario = () => {
             return;
         }
         updateError(false);
+
+        // Asignar un ID
+        cita.id = uuidv4();
+
+        // Crear Cita
+        crearCita(cita);
+
+        // Resetear formulario
+        updateCita({
+            mascota: '',
+            propietario: '',
+            fecha: '',
+            hora: '',
+            sintomas: ''
+        });
     };
 
     // Extraer Valores
